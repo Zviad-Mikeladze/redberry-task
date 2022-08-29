@@ -36,9 +36,11 @@
   padding: 18px 60px;
   background: #62a1eb;
   border-radius: 8px;
+  border-color: #ffffff;
   font-size: x-large;
   width: 387px;
   height: 60px;
   align-items: center;
   justify-content: space-between;
+  color: #ffffff;
 }
