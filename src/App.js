@@ -1,10 +1,13 @@
-import './App.css';
+import Landing from "./pages/Landing";
+import "./App.css";
 
 function App() {
   return (
-    <div >
-     
-    </div>
+    <main>
+      <div>
+        <Landing />
+      </div>
+    </main>
   );
 }
 

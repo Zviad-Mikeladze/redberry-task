@@ -1,0 +1,44 @@
+.logo {
+  position: absolute;
+  width: 112px;
+  height: 18px;
+  left: calc(50% - 112px / 2);
+  top: 79px;
+
+  background: url("../images/LOGO-02\ 1.png");
+}
+.frame {
+  position: absolute;
+  width: 781px;
+  height: 482px;
+  left: calc(50% - 781px / 2);
+  top: 182px;
+}
+
+.image {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+
+  background: url("../images/Layer1.png");
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  top: 787px;
+  left: calc(50% - 387px / 2 - 0.5px);
+}
+.buttons button {
+  padding: 18px 60px;
+  background: #62a1eb;
+  border-radius: 8px;
+  font-size: x-large;
+  width: 387px;
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+}

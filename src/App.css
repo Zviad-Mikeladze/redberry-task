@@ -1,0 +1,14 @@
+main {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+ 
+  background: #ffffff;
+}
+@media only screen and (max-width: 390px) {
+  main {
+    width: 390px;
+    height: 844px;
+    font-size: small;
+  }
+}
