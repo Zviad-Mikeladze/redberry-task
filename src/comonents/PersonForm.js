@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import "./PersonForm.module.css";
+import classes from "./PersonForm.module.css";
 const PersonForm = () => {
   const [teamsList, setTeamsList] = useState([]);
   const [positionsList, setPositionsList] = useState([]);
@@ -48,13 +49,22 @@ const PersonForm = () => {
     teamFetch();
     positionFetCh();
   }, []);
-  console.log(positionsList);
+  //   console.log(positionsList);
   return (
     <div>
       <form>
-        <div>
-          <input></input>
-          <input></input>
+        <div className={classes.mainInput}>
+          <div className={classes.inputName}>
+            <label>სახელი</label>
+            <input type="text"></input>
+            <p>test2</p>
+          </div>
+          <div className={classes.inputName}>
+            {" "}
+            <label>გვარი</label>
+            <input type="text"></input>
+            <small>test</small>
+          </div>
         </div>
         <select>
           <option disabled selected hidden>
@@ -72,8 +82,17 @@ const PersonForm = () => {
             return <option key={position.id}>{position.name}</option>;
           })}
         </select>
-        <input></input>
-        <input></input>
+        <div className={classes.inputOther}>
+          <label>მეილი</label>
+          <input></input>
+          <label>ტელეფონის ნომერი</label>
+          <input></input>
+        </div>
+
+        <button>
+          {" "}
+          <b> შემდეგი </b>
+        </button>
       </form>
     </div>
   );

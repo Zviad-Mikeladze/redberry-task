@@ -1,0 +1,66 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: absolute;
+  height: 973px;
+  width: 1226px;
+  left: 347px;
+  right: 347px;
+  top: 157px;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 18px;
+  gap: 30px;
+}
+
+.mainInput {
+  display: flex;
+  flex-direction: row;
+  border-radius: 18px;
+  width: 920px;
+  gap: calc(10%);
+  background-color: rgb(255, 255, 255);
+}
+
+.inputName {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.inputName input {
+  width: calc(100% - 16px);
+  height: 60px;
+  border-radius: 10px;
+  border-color: #8ac0e2;
+}
+
+select {
+  padding: 8px 24px;
+  width: 926px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #f6f6f6;
+}
+.inputOther {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 24px;
+}
+.inputOther input {
+  width: 926px;
+  height: 60px;
+  border-radius: 10px;
+  border-color: #8ac0e2;
+}
+
+form button {
+  background-color: #62a1eb;
+  width: 180px;
+  height: 60px;
+  color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  font-size: larger;
+  margin-left: 750px;
+}
