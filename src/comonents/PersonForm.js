@@ -89,7 +89,7 @@ const PersonForm = () => {
           <input></input>
         </div>
 
-        <button>
+        <button className={classes.formButton}>
           {" "}
           <b> შემდეგი </b>
         </button>
