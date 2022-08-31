@@ -1,8 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MyDropzone from "./DropDown";
 import classes from "./LaptopForm.module.css";
 
 const LaptopForm = () => {
+  const [brandList, setBrandList] = useState([]);
+  const [cpuList, setCpuList] = useState([]);
+
+  const brandFetch = async () => {
+    const response = await fetch(
+      "https://pcfy.redberryinternship.ge/api/brands",
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    const responseData = await response.json();
+    const brands = [];
+    for (const key in responseData.data) {
+      brands.push({
+        id: responseData.data[key].id,
+        name: responseData.data[key].name,
+      });
+    }
+    setBrandList(brands);
+  };
+  const cpuFetch = async () => {
+    const response = await fetch(
+      "https://pcfy.redberryinternship.ge/api/cpus",
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    const responseData = await response.json();
+
+    const cpus = [];
+    for (const key in responseData.data) {
+      cpus.push({
+        id: responseData.data[key].id,
+        name: responseData.data[key].name,
+      });
+    }
+    setCpuList(cpus);
+  };
+  useEffect(() => {
+    cpuFetch();
+    brandFetch();
+  }, []);
+  console.log(cpuList);
+  //   const [data, setData] = useState({});
+  //   const buttonSubmitHandler = (event) => {
+  //     event.preventDefault();
+  //     setData(event.target.value);
+  //     console.log(event.target.value)
+  //   };
+  //   console.log(data);
   return (
     <div className={classes.mainInput}>
       <div className={classes.dropDown}>
@@ -17,6 +73,9 @@ const LaptopForm = () => {
           <option selected hidden>
             ლეპტოპის ბრენდი
           </option>
+          {brandList.map((brand) => {
+            return <option key={brand.id}>{brand.name}</option>;
+          })}
         </select>
       </div>
 
@@ -25,6 +84,9 @@ const LaptopForm = () => {
           <option selected hiden>
             CPU
           </option>
+          {cpuList.map((cpu) => {
+            return <option key={cpu.id}>{cpu.name}</option>;
+          })}
         </select>
         <div className={classes.cpuInput}>
           <label> CPU-ს ბირთვი </label>
