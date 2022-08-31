@@ -1,48 +1,34 @@
-
 .mainInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.inputFullName {
   display: flex;
   flex-direction: row;
   border-radius: 18px;
-  width: 920px;
+  width: 100%;
   gap: calc(10%);
   background-color: rgb(255, 255, 255);
 }
-
 .inputName {
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 100%;
 }
-.inputName input {
-  width: calc(100% - 16px);
-  height: 60px;
-  border-radius: 10px;
-  border-color: #8ac0e2;
-}
-
-select {
-  padding: 8px 24px;
-  width: 926px;
-  height: 60px;
-  border-radius: 8px;
-  background-color: #f6f6f6;
-}
 .inputOther {
   display: flex;
   flex-direction: column;
   padding: 8px 24px;
-}
-.inputOther input {
-  width: 926px;
-  height: 60px;
-  border-radius: 10px;
-  border-color: #8ac0e2;
+  width: 100%;
+  gap: 10px;
 }
 
 .formButton {
   background-color: #62a1eb;
-  width: 180px;
+  width: 25%;
   height: 60px;
   color: #ffffff;
   border-radius: 5px;

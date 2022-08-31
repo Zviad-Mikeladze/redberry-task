@@ -1,3 +1,10 @@
+.mainInput {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
 small {
   font-size: 10px;
 }
@@ -6,8 +13,8 @@ hr {
 }
 .dropDown {
   box-sizing: border-box;
-  height: 423px;
-  width: 600px;
+  height: 25vh;
+  width: 25vw;
   background: #f7f7f7;
   border: 2px dashed #4386a9;
   border-radius: 18px;
@@ -17,45 +24,35 @@ hr {
   flex-direction: row;
   width: 80%;
   gap: 5%;
-  align-items: center;
+  align-items: flex-end;
 }
 .LapNameInput {
   display: flex;
   flex-direction: column;
-  height: 100px;
-  width: 50%;
+  width: 100%;
 }
-.LapNameInput input {
-  height: 60px;
-  border-radius: 5px;
-}
-.LapName select {
-  width: 50%;
-}
+
 .cpu {
   display: flex;
   flex-direction: row;
   width: 80%;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 }
-.cpuSelect select {
-  width: 100%;
+.cpu select {
+  width: 30%;
 }
 .cpuInput {
-  gap: 10px;
+  width: 30%;
   display: flex;
   flex-direction: column;
 }
-.cpuInput input {
-  height: 50px;
-  border-radius: 5px;
-}
+
 .ram {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 50px;
+  gap: 70px;
   width: 80%;
 }
 .ramInput {
@@ -64,10 +61,7 @@ hr {
   width: 40%;
   gap: 10px;
 }
-.ramInput input {
-  height: 60px;
-  border-radius: 5px;
-}
+
 .ramType {
   display: flex;
   flex-direction: column;
@@ -94,14 +88,7 @@ hr {
   width: 80%;
   gap: 5px;
 }
-.row input {
-  height: 60px;
-  border-radius: 5px;
-}
-.last {
-  margin-right: 700px;
-  gap: 20px;
-}
+
 .buttons {
   display: flex;
   flex-direction: row;

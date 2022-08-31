@@ -12,8 +12,8 @@ const Input = () => {
         <button>თანამშრომლის ინფო</button>
         <button>ლეპტოპის მახასიათებლები</button>
       </div>
-      
-      <form >
+
+      <form>
         <LaptopForm />
       </form>
       <div className={classes.logo}>test</div>

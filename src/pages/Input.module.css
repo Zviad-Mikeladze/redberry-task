@@ -48,7 +48,19 @@ form {
   border-radius: 18px;
   font-size: 20px;
   padding: 50px;
-  gap:30px
+  gap: 30px;
+}
+form input {
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  border-color: #8ac0e2;
+}
+form select {
+  width: 100%;
+  height: 60px;
+  border-radius: 8px;
+  background-color: #f6f6f6;
 }
 
 .logo {
