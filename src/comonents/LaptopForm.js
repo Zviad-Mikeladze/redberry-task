@@ -66,15 +66,15 @@ const LaptopForm = () => {
           <small>მხოლოდ ციფრები</small>
         </div>
       </div>
-      {/* <div className={classes.last}>
+      <div className={classes.last}>
         <label>ლეპტოპის მდგომარეობა</label>
-        <div>
+        <div className={classes.lastRadio}>
           <input type="radio"></input>
           <label>ახალი</label>
           <input type="radio"></input>
           <label> მეორადი</label>
         </div>
-      </div> */}
+      </div>
       <div className={classes.buttons}>
         <button className={classes.button1}>
           <b>უკან</b>

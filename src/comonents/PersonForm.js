@@ -5,6 +5,7 @@ const PersonForm = () => {
   const [teamsList, setTeamsList] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState();
   const [positionsList, setPositionsList] = useState([]);
+  const [personData, setPersonData] = useState();
 
   const teamFetch = async () => {
     const response = await fetch(
@@ -63,19 +64,21 @@ const PersonForm = () => {
   };
   const positionChangeHandler = (event) => {};
 
+  const formSubmitHandler = (event) => {};
+
   return (
     <div className={classes.mainInput}>
       <div className={classes.inputFullName}>
         <div className={classes.inputName}>
           <label>სახელი</label>
           <input type="text" required />
-          <p>test2</p>
+          <small>მინიმუმ 2 სიმბოლო, ქართული ასოები</small>
         </div>
         <div className={classes.inputName}>
           {" "}
           <label>გვარი</label>
           <input type="text" required />
-          <small>test</small>
+          <small>მინიმუმ 2 სიმბოლო, ქართული ასოები</small>
         </div>
       </div>
       <select required onChange={teamsChangeHandler}>
@@ -110,11 +113,12 @@ const PersonForm = () => {
         <input required />
         <small>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</small>
       </div>
-
-      <button className={classes.formButton}>
-        {" "}
-        <b> შემდეგი </b>
-      </button>
+      <div className={classes.formButton}>
+        <button>
+          {" "}
+          <b> შემდეგი </b>
+        </button>
+      </div>
     </div>
   );
 };
