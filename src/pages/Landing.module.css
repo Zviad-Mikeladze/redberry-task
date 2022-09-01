@@ -36,12 +36,11 @@
   padding: 18px 60px;
   background: #62a1eb;
   border-radius: 8px;
-  border-color: #FFFFFF;
-  font-size: x-large;
+  border-color: #ffffff;
+  font-size: 20px;
   width: 387px;
   height: 60px;
   align-items: center;
   justify-content: space-between;
-  color: #FFFFFF;
+  color: #ffffff;
 }
-

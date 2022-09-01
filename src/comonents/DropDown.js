@@ -1,5 +1,6 @@
-import React, { useCallback } from "react";
+import React, { isValidElement, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import classes from './DropDown.module.css'
 
 const MyDropzone = () => {
   const onDrop = useCallback((acceptedFiles) => {
@@ -17,12 +18,15 @@ const MyDropzone = () => {
     });
   }, []);
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
-
+  const buttonHandler = (event) => {
+    event.preventDefault();
+  };
   return (
-    <div {...getRootProps()}>
+    <div {...getRootProps()} className={classes.drop}>
       <input {...getInputProps()} />
-      <p >Drag 'n' drop some files here, or click to select files</p>
+      <p>ჩააგდე ან ატვირთე ფოტო</p>
+      <button onClick={buttonHandler}>ატვირთე</button>
     </div>
   );
 };
-export default MyDropzone;    
+export default MyDropzone;
