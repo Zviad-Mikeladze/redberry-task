@@ -100,8 +100,10 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
   return (
     <div className={classes.mainInput}>
       <div className={classes.dropDown}>
+        <label>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</label>
+        <button>ატვირთე</button>
         <input
-          className={classes.drop}
+          style={{ display: "none" }}
           type="file"
           id="image"
           name="image"
@@ -114,6 +116,7 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
         <div className={classes.LapNameInput}>
           <label>ლეპტოპის სახელი</label>
           <input type="text" required onChange={lapNameHandler} />
+          <small>ლათინური ასოები, ციფრები, !@#$%^&*()_+= </small>
         </div>
         <select onChange={brandIdHandler}>
           <option selected hidden>

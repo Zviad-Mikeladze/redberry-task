@@ -45,6 +45,7 @@ form {
   background: #ffffff;
   border-radius: 3%;
   font-size: 15px;
+  font-weight: 500;
   padding: 20px;
 }
 form input {
