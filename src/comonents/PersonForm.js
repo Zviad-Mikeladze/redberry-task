@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./PersonForm.module.css";
 import classes from "./PersonForm.module.css";
-const PersonForm = () => {
+const PersonForm = ({ content, setContent, data, setData }) => {
   const [teamsList, setTeamsList] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState();
   const [positionsList, setPositionsList] = useState([]);
@@ -58,26 +58,53 @@ const PersonForm = () => {
   useEffect(() => {
     teamFetch();
   }, []);
-
+  const nameHandler = (event) => {
+    setData({ ...data, name: event.target.value });
+  };
+  const surnameHandler = (event) => {
+    setData({ ...data, surname: event.target.value });
+  };
   const teamsChangeHandler = (event) => {
     setSelectedTeam(event.target.value);
-  };
-  const positionChangeHandler = (event) => {};
 
-  const formSubmitHandler = (event) => {};
+    setData({ ...data, team_id: event.target.value });
+  };
+  const positionChangeHandler = (event) => {
+    setData({ ...data, position_id: event.target.value });
+  };
+  const emailHandler = (event) => {
+    setData({ ...data, email: event.target.value });
+  };
+  const phoneNumberHandler = (event) => {
+    setData({ ...data, phone_number: event.target.value });
+  };
+
+  const buttonSubmitHandler = () => {
+    setContent(content + 1);
+  };
 
   return (
     <div className={classes.mainInput}>
       <div className={classes.inputFullName}>
         <div className={classes.inputName}>
           <label>სახელი</label>
-          <input type="text" required />
+          <input
+            value={data.name}
+            onChange={nameHandler}
+            type="text"
+            required
+          />
           <small>მინიმუმ 2 სიმბოლო, ქართული ასოები</small>
         </div>
         <div className={classes.inputName}>
           {" "}
           <label>გვარი</label>
-          <input type="text" required />
+          <input
+            type="text"
+            required
+            value={data.surname}
+            onChange={surnameHandler}
+          />
           <small>მინიმუმ 2 სიმბოლო, ქართული ასოები</small>
         </div>
       </div>
@@ -107,14 +134,18 @@ const PersonForm = () => {
       </select>
       <div className={classes.inputOther}>
         <label>მეილი</label>
-        <input required />
+        <input required value={data.email} onChange={emailHandler} />
         <small>უნდა მთვრდებოდეს @redberry.ge-ით</small>
         <label>ტელეფონის ნომერი</label>
-        <input required />
+        <input
+          required
+          value={data.phone_number}
+          onChange={phoneNumberHandler}
+        />
         <small>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</small>
       </div>
       <div className={classes.formButton}>
-        <button>
+        <button onClick={buttonSubmitHandler}>
           {" "}
           <b> შემდეგი </b>
         </button>

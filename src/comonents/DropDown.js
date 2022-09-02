@@ -1,8 +1,8 @@
-import React, { isValidElement, useCallback } from "react";
+import React, { isValidElement, useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import classes from './DropDown.module.css'
+import classes from "./DropDown.module.css";
 
-const MyDropzone = () => {
+const MyDropzone = (props, setBinaryArr) => {
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.forEach((file) => {
       const reader = new FileReader();
@@ -10,11 +10,11 @@ const MyDropzone = () => {
       reader.onabort = () => console.log("file reading was aborted");
       reader.onerror = () => console.log("file reading has failed");
       reader.onload = () => {
-        // Do whatever you want with the file contents
         const binaryStr = reader.result;
         console.log(binaryStr);
+        setBinaryArr(binaryStr);
       };
-      reader.readAsArrayBuffer(file);
+      reader.readAsBinaryString(file);
     });
   }, []);
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
