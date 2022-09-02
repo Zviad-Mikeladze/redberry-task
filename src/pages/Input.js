@@ -48,37 +48,21 @@ const Input = () => {
     const body = new FormData();
     body.append("laptop_cpu", data.laptop_cpu);
     body.append("laptop_price", data.laptop_price);
-    body.append("", "\\");
     body.append("laptop_purchase_date", data.laptop_purchase_date);
-    body.append("", "\\");
     body.append("name", data.name);
-    body.append("", "\\");
     body.append("laptop_state", data.laptop_state);
-    body.append("", "\\");
     body.append("laptop_cpu_threads", data.laptop_cpu_threads);
-    body.append("", "\\");
     body.append("laptop_name", data.laptop_name);
-    body.append("", "\\");
     body.append("position_id", data.position_id);
-    body.append("", "\\");
     body.append("laptop_image", data.laptop_image);
-    body.append("", "\\");
     body.append("laptop_brand_id", data.laptop_brand_id);
-    body.append("", "\\");
     body.append("laptop_cpu_cores", data.laptop_cpu_cores);
-    body.append("", "\\");
     body.append("laptop_ram", data.laptop_ram);
-    body.append("", "\\");
     body.append("token", "6dbfdb8e82566c48915203f1d42f259b");
-    body.append("", "\\");
     body.append("phone_number", data.phone_number);
-    body.append("", "\\");
     body.append("surname", data.surname);
-    body.append("", "\\");
     body.append("email", data.email);
-    body.append("", "\\");
     body.append("team_id", data.team_id);
-    body.append("", "\\");
     body.append("laptop_hard_drive_type", data.laptop_hard_drive_type);
 
     fetch("https://pcfy.redberryinternship.ge/api/laptop/create", {

@@ -4,7 +4,6 @@ import classes from "./LaptopForm.module.css";
 const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
   const [brandList, setBrandList] = useState([]);
   const [cpuList, setCpuList] = useState([]);
-  const [binaryArr, setBinaryArr] = useState();
 
   const brandFetch = async () => {
     const response = await fetch(
@@ -100,22 +99,25 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
   return (
     <div className={classes.mainInput}>
       <div className={classes.dropDown}>
-        <label>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</label>
-        <button>ატვირთე</button>
-        <input
-          style={{ display: "none" }}
-          type="file"
-          id="image"
-          name="image"
-          accept="image/*"
-          required
-          onChange={imgHandler}
-        />
+        <input type="file" accept="image/*" required onChange={imgHandler} />
+        <p>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</p>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
+          ატვირთე
+        </button>
       </div>
       <div className={classes.LapName}>
         <div className={classes.LapNameInput}>
           <label>ლეპტოპის სახელი</label>
-          <input type="text" required onChange={lapNameHandler} />
+          <input
+            placeholder="HP"
+            type="text"
+            required
+            onChange={lapNameHandler}
+          />
           <small>ლათინური ასოები, ციფრები, !@#$%^&*()_+= </small>
         </div>
         <select onChange={brandIdHandler}>
@@ -143,20 +145,20 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
         </select>
         <div className={classes.cpuInput}>
           <label> CPU-ს ბირთვი </label>
-          <input onChange={cpuCoresHandler} type="number" />
+          <input placeholder="14" onChange={cpuCoresHandler} type="number" />
           <small>მხოლოდ ციფრები</small>
         </div>
 
         <div className={classes.cpuInput}>
           <label> CPU-ს ნაკადი </label>
-          <input onChange={threadsHandler} type="number" />
+          <input placeholder="365" onChange={threadsHandler} type="number" />
           <small>მხოლოდ ციფრები</small>
         </div>
       </div>
       <div className={classes.ram}>
         <div className={classes.ramInput}>
           <label>ლეპტოპის RAM(GB)</label>
-          <input onChange={ramHandler} type="number" />
+          <input placeholder="16" onChange={ramHandler} type="number" />
           <small>მხოლოდ ციფრები</small>
         </div>
         <div className={classes.ramType}>
@@ -177,7 +179,7 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
         </div>
         <div className={classes.row}>
           <label>ლეპტოპის ფასი</label>
-          <input onChange={priceHandler} />
+          <input placeholder="0000" onChange={priceHandler} />
           <small>მხოლოდ ციფრები</small>
         </div>
       </div>

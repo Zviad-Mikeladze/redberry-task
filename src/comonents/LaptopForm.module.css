@@ -25,7 +25,7 @@ hr {
   justify-content: space-evenly;
   align-items: center;
 }
-.dropDown label {
+.dropDown p {
   width: 40%;
   font-size: 20px;
   text-align: center;
@@ -36,7 +36,21 @@ hr {
   width: 40%;
   background-color: #62a1eb;
   color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  padding: 10px 10px;
 }
+
+.dropDown input {
+  position: absolute;
+  box-sizing: border-box;
+  width: 35%;
+  height: 420px;
+  cursor: pointer;
+  opacity: 0;
+}
+
 .LapName {
   display: flex;
   flex-direction: row;

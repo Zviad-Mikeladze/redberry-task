@@ -5,7 +5,6 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   const [teamsList, setTeamsList] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState();
   const [positionsList, setPositionsList] = useState([]);
-  const [personData, setPersonData] = useState();
 
   const teamFetch = async () => {
     const response = await fetch(
@@ -89,7 +88,7 @@ const PersonForm = ({ content, setContent, data, setData }) => {
         <div className={classes.inputName}>
           <label>სახელი</label>
           <input
-            value={data.name}
+            placeholder="გრიშა"
             onChange={nameHandler}
             type="text"
             required
@@ -100,9 +99,9 @@ const PersonForm = ({ content, setContent, data, setData }) => {
           {" "}
           <label>გვარი</label>
           <input
+            placeholder="ბაგრატიონი"
             type="text"
             required
-            value={data.surname}
             onChange={surnameHandler}
           />
           <small>მინიმუმ 2 სიმბოლო, ქართული ასოები</small>
@@ -134,10 +133,15 @@ const PersonForm = ({ content, setContent, data, setData }) => {
       </select>
       <div className={classes.inputOther}>
         <label>მეილი</label>
-        <input required value={data.email} onChange={emailHandler} />
+        <input
+          placeholder="grish666@redberry.ge"
+          required
+          onChange={emailHandler}
+        />
         <small>უნდა მთვრდებოდეს @redberry.ge-ით</small>
         <label>ტელეფონის ნომერი</label>
         <input
+          placeholder="+995598000701"
           required
           value={data.phone_number}
           onChange={phoneNumberHandler}
