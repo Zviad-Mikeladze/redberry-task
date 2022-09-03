@@ -104,7 +104,7 @@ const Input = () => {
         </button>
       </div>
 
-      <form>
+      <form value={data}>
         {!succes && componentsList[content]}
         {succes && <PopUp />}
       </form>

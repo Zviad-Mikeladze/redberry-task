@@ -1,0 +1,23 @@
+.card {
+  width: 70%;
+  background-color: gray;
+  display: flex;
+  
+  flex-direction: row;
+}
+.listRow {
+  display: flex;
+  flex-direction: column;
+}
+.mapedText {
+  display: flex;
+  flex-direction: column;
+}
+.images {
+  width: 100px;
+  height: 100px;
+}
+.images img {
+  width: 100px;
+  height: 100px;
+}

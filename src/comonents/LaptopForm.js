@@ -89,7 +89,7 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
 
   const imgHandler = (event) => {
     const file = event.target.files[0];
-
+    localStorage.setItem("images", event.target.files[0]);
     setData({
       ...data,
       laptop_image: file,

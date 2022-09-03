@@ -1,0 +1,7 @@
+.mappedList {
+  display: flex;
+  flex-direction: column;
+  width: 1920px;
+  background-color: white;
+  align-items: center;
+}
