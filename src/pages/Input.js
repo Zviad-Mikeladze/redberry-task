@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LaptopForm from "../comonents/LaptopForm";
 import PersonForm from "../comonents/PersonForm";
 import classes from "./Input.module.css";
+import PopUp from "../comonents/PopUp";
 const Input = () => {
   const [content, setContent] = useState(0);
   const [pressed, setPressed] = useState(false);
+  const [succes, setSucces] = useState(false);
   const [data, setData] = useState({
     name: "",
     surname: "",
@@ -25,6 +27,26 @@ const Input = () => {
     laptop_purchase_date: "",
     laptop_price: null,
   });
+  const body = new FormData();
+  body.append("laptop_cpu", data.laptop_cpu);
+  body.append("laptop_price", data.laptop_price);
+  body.append("laptop_purchase_date", data.laptop_purchase_date);
+  body.append("name", data.name);
+  body.append("laptop_state", data.laptop_state);
+  body.append("laptop_cpu_threads", data.laptop_cpu_threads);
+  body.append("laptop_name", data.laptop_name);
+  body.append("position_id", data.position_id);
+  body.append("laptop_image", data.laptop_image);
+  body.append("laptop_brand_id", data.laptop_brand_id);
+  body.append("laptop_cpu_cores", data.laptop_cpu_cores);
+  body.append("laptop_ram", data.laptop_ram);
+  body.append("token", "6dbfdb8e82566c48915203f1d42f259b");
+  body.append("phone_number", data.phone_number);
+  body.append("surname", data.surname);
+  body.append("email", data.email);
+  body.append("team_id", data.team_id);
+  body.append("laptop_hard_drive_type", data.laptop_hard_drive_type);
+
   const buttonChangeHandler = (event) => {
     setContent(event.target.value);
   };
@@ -43,36 +65,31 @@ const Input = () => {
       setContent={setContent}
     />,
   ];
+  const posting = async () => {
+    const response = await fetch(
+      "https://pcfy.redberryinternship.ge/api/laptop/create",
+      {
+        body,
+        headers: {
+          Accept: "application/json",
+        },
+        method: "POST",
+      }
+    );
+    const errData = await response.json();
 
-  if (pressed) {
-    const body = new FormData();
-    body.append("laptop_cpu", data.laptop_cpu);
-    body.append("laptop_price", data.laptop_price);
-    body.append("laptop_purchase_date", data.laptop_purchase_date);
-    body.append("name", data.name);
-    body.append("laptop_state", data.laptop_state);
-    body.append("laptop_cpu_threads", data.laptop_cpu_threads);
-    body.append("laptop_name", data.laptop_name);
-    body.append("position_id", data.position_id);
-    body.append("laptop_image", data.laptop_image);
-    body.append("laptop_brand_id", data.laptop_brand_id);
-    body.append("laptop_cpu_cores", data.laptop_cpu_cores);
-    body.append("laptop_ram", data.laptop_ram);
-    body.append("token", "6dbfdb8e82566c48915203f1d42f259b");
-    body.append("phone_number", data.phone_number);
-    body.append("surname", data.surname);
-    body.append("email", data.email);
-    body.append("team_id", data.team_id);
-    body.append("laptop_hard_drive_type", data.laptop_hard_drive_type);
+    if (!response.ok) {
+      setSucces(false);
+      throw new Error(errData.message || "Could not create form data.");
+    } else {
+      setSucces(true);
+    }
+  };
+  useEffect(() => {
+    setPressed(false);
+    posting();
+  }, [pressed]);
 
-    fetch("https://pcfy.redberryinternship.ge/api/laptop/create", {
-      body,
-      headers: {
-        Accept: "application/json",
-      },
-      method: "POST",
-    });
-  }
   return (
     <div className={classes.inputMain}>
       <button className={classes.back}>
@@ -87,7 +104,11 @@ const Input = () => {
         </button>
       </div>
 
-      <form>{componentsList[content]}</form>
+      <form>
+        {!succes && componentsList[content]}
+        {succes && <PopUp />}
+      </form>
+
       <div className={classes.logo}></div>
     </div>
   );

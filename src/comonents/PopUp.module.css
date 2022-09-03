@@ -1,0 +1,47 @@
+.popUp {
+  position: relative;
+  align-self: center;
+  width: 50%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border-color: black;
+  border: 2px;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 1;
+}
+.popUp h1 {
+  font-size: 30px;
+}
+.image {
+  width: 25%;
+  height: 40%;
+  background-image: url("../images/Frame.png");
+}
+.buttons {
+  width: 40%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.button1 {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  padding: 10px 10px;
+  background-color: #62a1eb;
+  color: white;
+}
+.button2 {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  padding: 10px 10px;
+  color: #62a1eb;
+}

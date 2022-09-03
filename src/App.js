@@ -9,7 +9,6 @@ function App() {
         {/* <Landing /> */}
         <Input />
         {/* <PersonForm /> */}
-      
       </div>
     </main>
   );

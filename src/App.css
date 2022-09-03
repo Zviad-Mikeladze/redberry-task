@@ -1,6 +1,7 @@
 main {
   background: #ffffff;
   align-items: center;
+  width: 1920px;
 }
 @media only screen and (max-width: 390px) {
   main {
