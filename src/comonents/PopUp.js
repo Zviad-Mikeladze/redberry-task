@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import classes from "./PopUp.module.css";
 const PopUp = () => {
   return (
@@ -8,8 +9,12 @@ const PopUp = () => {
         <h1>ჩანაწერი დამატებულია!</h1>
       </div>
       <div className={classes.buttons}>
-        <button className={classes.button1}>სიაში გადაყვანა</button>
-        <button className={classes.button2}>მთავარი</button>
+        <Link to="/list">
+          <button className={classes.button1}>სიაში გადაყვანა</button>
+        </Link>
+        <Link to="/">
+          <button className={classes.button2}>მთავარი</button>
+        </Link>
       </div>
     </div>
   );

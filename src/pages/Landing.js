@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import classes from "./Landing.module.css";
 
 const Landing = () => {
@@ -9,8 +10,12 @@ const Landing = () => {
         <div className={classes.image}></div>
       </div>
       <div className={classes.buttons}>
-        <button>ჩანაწერის დამატება</button>
-        <button>ჩანაწერების სია</button>
+        <Link to="/input">
+          <button>ჩანაწერის დამატება</button>
+        </Link>
+        <Link to="/list">
+          <button>ჩანაწერების სია</button>
+        </Link>
       </div>
     </div>
   );

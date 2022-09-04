@@ -133,7 +133,7 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
           })}
         </select>
       </div>
-
+      <hr />
       <div className={classes.cpu}>
         <select onChange={cpuHandler}>
           <option selected hidden>
@@ -172,6 +172,7 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
           </div>
         </div>
       </div>
+      <hr />
       <div className={classes.buy}>
         <div className={classes.row}>
           <label>შეძენის რიცხვი(არჩევითი)</label>

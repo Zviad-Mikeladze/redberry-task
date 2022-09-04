@@ -30,7 +30,7 @@ const List = () => {
   
   return (
     <div className={classes.mappedList}>
-      <h1>ჩანაწერების სია</h1>
+     
 
       <ListComp list={list}  />
     </div>

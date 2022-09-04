@@ -66,23 +66,25 @@ const Input = () => {
     />,
   ];
   const posting = async () => {
-    const response = await fetch(
-      "https://pcfy.redberryinternship.ge/api/laptop/create",
-      {
-        body,
-        headers: {
-          Accept: "application/json",
-        },
-        method: "POST",
-      }
-    );
-    const errData = await response.json();
+    if (pressed) {
+      const response = await fetch(
+        "https://pcfy.redberryinternship.ge/api/laptop/create",
+        {
+          body,
+          headers: {
+            Accept: "application/json",
+          },
+          method: "POST",
+        }
+      );
+      const errData = await response.json();
 
-    if (!response.ok) {
-      setSucces(false);
-      throw new Error(errData.message || "Could not create form data.");
-    } else {
-      setSucces(true);
+      if (!response.ok) {
+        setSucces(false);
+        throw new Error(errData.message || "Could not create form data.");
+      } else {
+        setSucces(true);
+      }
     }
   };
   useEffect(() => {

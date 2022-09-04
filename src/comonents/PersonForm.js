@@ -6,6 +6,8 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   const [selectedTeam, setSelectedTeam] = useState();
   const [positionsList, setPositionsList] = useState([]);
 
+  const geRegex = RegExp(/^([\u10D0-\u10F0]+)$/);
+
   const teamFetch = async () => {
     const response = await fetch(
       "https://pcfy.redberryinternship.ge/api/teams",
@@ -57,8 +59,12 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   useEffect(() => {
     teamFetch();
   }, []);
+
   const nameHandler = (event) => {
-    setData({ ...data, name: event.target.value });
+    if (geRegex.test(event.target.value)) {
+      console.log("ture");
+      setData({ ...data, name: event.target.value });
+    }
   };
   const surnameHandler = (event) => {
     setData({ ...data, surname: event.target.value });
