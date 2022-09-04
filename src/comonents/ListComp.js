@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import LaptopInfo from "./LaptopInfo";
 import classes from "./ListComp.module.css";
 const ListComp = (list) => {
@@ -22,7 +22,7 @@ const ListComp = (list) => {
             <div className={classes.images}>
               <img
                 src={`https://pcfy.redberryinternship.ge${data.laptop.image} `}
-                alt="image not found"
+                alt="not found"
               ></img>
             </div>
             <div className={classes.mapedText}>

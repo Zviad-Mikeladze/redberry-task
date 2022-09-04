@@ -34,7 +34,7 @@ const LaptopInfo = (laptopId) => {
         {" "}
         <img
           src={`https://pcfy.redberryinternship.ge${info.laptop.image} `}
-          alt="image not found"
+          alt="not found"
         ></img>
         <div className={classes.userData}>
           <div>

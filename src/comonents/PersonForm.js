@@ -5,8 +5,13 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   const [teamsList, setTeamsList] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState();
   const [positionsList, setPositionsList] = useState([]);
+  const [nameReg, setNameReg] = useState();
+  const [emailReg, setEmailReg] = useState();
+  const [numReg, setNumReg] = useState();
 
-  const geRegex = RegExp(/^([\u10D0-\u10F0]+)$/);
+  const geRegex = new RegExp(/^([\u10D0-\u10F0]{2,})$/);
+  const mailRegex = new RegExp("[a-z0-9]+@redberry.ge");
+  const numRegex = new RegExp("/^(+?995)?(79d{7}|5d{8})$/");
 
   const teamFetch = async () => {
     const response = await fetch(
@@ -59,15 +64,22 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   useEffect(() => {
     teamFetch();
   }, []);
-
+  console.log(nameReg);
   const nameHandler = (event) => {
     if (geRegex.test(event.target.value)) {
-      console.log("ture");
+      setNameReg(true);
       setData({ ...data, name: event.target.value });
+    } else {
+      setNameReg(false);
     }
   };
   const surnameHandler = (event) => {
-    setData({ ...data, surname: event.target.value });
+    if (geRegex.test(event.target.value)) {
+      setNameReg(true);
+      setData({ ...data, surname: event.target.value });
+    } else {
+      setNameReg(false);
+    }
   };
   const teamsChangeHandler = (event) => {
     setSelectedTeam(event.target.value);
@@ -78,22 +90,40 @@ const PersonForm = ({ content, setContent, data, setData }) => {
     setData({ ...data, position_id: event.target.value });
   };
   const emailHandler = (event) => {
-    setData({ ...data, email: event.target.value });
+    if (mailRegex.test(event.target.value)) {
+      setEmailReg(true);
+      setData({ ...data, email: event.target.value });
+    } else {
+      setEmailReg(false);
+    }
   };
   const phoneNumberHandler = (event) => {
-    setData({ ...data, phone_number: event.target.value });
+    if (numRegex.test(event.target.value)) {
+      setNumReg(true);
+      setData({ ...data, phone_number: event.target.value });
+    } else {
+      setNumReg(false);
+    }
   };
 
   const buttonSubmitHandler = () => {
+    //sesamowmebeli bolo
     setContent(content + 1);
   };
 
   return (
     <div className={classes.mainInput}>
       <div className={classes.inputFullName}>
-        <div className={classes.inputName}>
+        <div
+          className={classes.inputName({
+            "has-error": { nameReg },
+          })}
+        >
           <label>სახელი</label>
           <input
+            onBlur={() => {
+              setNameReg(false);
+            }}
             placeholder="გრიშა"
             onChange={nameHandler}
             type="text"
