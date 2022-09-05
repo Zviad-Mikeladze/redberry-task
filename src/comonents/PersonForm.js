@@ -8,10 +8,10 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   const [nameReg, setNameReg] = useState();
   const [emailReg, setEmailReg] = useState();
   const [numReg, setNumReg] = useState();
-
+  console.log(numReg);
   const geRegex = new RegExp(/^([\u10D0-\u10F0]{2,})$/);
   const mailRegex = new RegExp("[a-z0-9]+@redberry.ge");
-  const numRegex = new RegExp("/^(+?995)?(79d{7}|5d{8})$/");
+  const numRegex = new RegExp(/^(\+?995)(5)[0-9]{8}/);
 
   const teamFetch = async () => {
     const response = await fetch(
@@ -64,7 +64,7 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   useEffect(() => {
     teamFetch();
   }, []);
-  console.log(nameReg);
+  // console.log(nameReg);
   const nameHandler = (event) => {
     if (geRegex.test(event.target.value)) {
       setNameReg(true);
@@ -114,11 +114,7 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   return (
     <div className={classes.mainInput}>
       <div className={classes.inputFullName}>
-        <div
-          className={classes.inputName({
-            "has-error": { nameReg },
-          })}
-        >
+        <div className={classes.inputName}>
           <label>სახელი</label>
           <input
             onBlur={() => {
@@ -176,12 +172,7 @@ const PersonForm = ({ content, setContent, data, setData }) => {
         />
         <small>უნდა მთვრდებოდეს @redberry.ge-ით</small>
         <label>ტელეფონის ნომერი</label>
-        <input
-          placeholder="+995598000701"
-          required
-          value={data.phone_number}
-          onChange={phoneNumberHandler}
-        />
+        <input placeholder="+995598000701" onChange={phoneNumberHandler} />
         <small>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</small>
       </div>
       <div className={classes.formButton}>

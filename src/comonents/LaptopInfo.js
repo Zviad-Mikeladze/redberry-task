@@ -2,31 +2,109 @@ import React, { useEffect, useState } from "react";
 import classes from "./LaptopInfo.module.css";
 
 const LaptopInfo = (laptopId) => {
-  console.log(laptopId);
   const [info, setInfo] = useState([]);
-  useEffect(() => {
-    const fetcInfo = async () => {
-      const response = await fetch(
-        `https://pcfy.redberryinternship.ge/api/laptop/${laptopId.laptopId}?token=6dbfdb8e82566c48915203f1d42f259b`,
-        {
-          headers: {
-            Accept: "application/json",
-          },
+  const [team, setTeam] = useState();
+  const [position, setPosition] = useState();
+  const [brand, setBrand] = useState();
+  const [selected, setSelected] = useState([]);
+
+  const fetcInfo = async () => {
+    const response = await fetch(
+      `https://pcfy.redberryinternship.ge/api/laptop/${laptopId.laptopId}?token=6dbfdb8e82566c48915203f1d42f259b`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+    const responseInfo = await response.json();
+
+    let resInfo = [];
+
+    resInfo.push({
+      laptop: responseInfo.data.laptop,
+      user: responseInfo.data.user,
+    });
+    setInfo(resInfo);
+    setSelected({
+      teamId: responseInfo.data.user.team_id,
+      positionId: responseInfo.data.user.position_id,
+      brandId: responseInfo.data.laptop.brand_id,
+    });
+  };
+  const teamFetch = async () => {
+    const response = await fetch(
+      "https://pcfy.redberryinternship.ge/api/teams",
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    const responseData = await response.json();
+
+    let teams;
+    for (const key in responseData.data) {
+      if (selected.teamId == responseData.data[key].id) {
+        teams = responseData.data[key].name;
+      }
+
+      setTeam(teams);
+    }
+  };
+  const positionFetCh = async () => {
+    const response = await fetch(
+      "https://pcfy.redberryinternship.ge/api/positions",
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+    const responseData = await response.json();
+    let positions;
+
+    for (const key in responseData.data) {
+      if (selected.teamId == responseData.data[key].team_id) {
+        if (selected.positionId == responseData.data[key].id) {
+          positions = responseData.data[key].name;
         }
-      );
-      const responseInfo = await response.json();
-      console.log(responseInfo);
-      let resInfo = [];
+        setPosition(positions);
+      }
+    }
+  };
+  const brandFetch = async () => {
+    const response = await fetch(
+      "https://pcfy.redberryinternship.ge/api/brands",
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
 
-      resInfo.push({
-        laptop: responseInfo.data.laptop,
-        user: responseInfo.data.user,
-      });
-      setInfo(resInfo);
-    };
+    const responseData = await response.json();
 
+    let brands;
+
+    for (const key in responseData.data) {
+      if (selected.brandId == responseData.data[key].id) {
+        brands = responseData.data[key].name;
+      }
+
+      setBrand(brands);
+    }
+  };
+
+  useEffect(() => {
     fetcInfo();
   }, [laptopId]);
+  useEffect(() => {
+    teamFetch();
+    positionFetCh();
+    brandFetch();
+  }, [selected]);
 
   const userInfo = info.map((info) => {
     return (
@@ -46,10 +124,10 @@ const LaptopInfo = (laptopId) => {
           </div>
           <div key={info.laptop.name}>
             <p>
-              {info.user.name} {info.user.surname}
+              {info.userName} {info.user.surname}
             </p>
-            <p>{info.user.team_id}</p>
-            <p>{info.user.position_id}</p>
+            <p>{team}</p>
+            <p>{position}</p>
             <p>{info.user.email}</p>
             <p>{info.user.phone_number}</p>
           </div>
@@ -72,7 +150,7 @@ const LaptopInfo = (laptopId) => {
         <div>
           {" "}
           <p>{info.laptop.name}</p>
-          <p>{info.laptop.brand_id}</p>
+          <p>{brand}</p>
           <p>{info.laptop.ram}</p>
           <p>{info.laptop.hard_drive_type}</p>
           <p>{info.laptop.cpu.name}</p>

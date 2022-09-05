@@ -4,6 +4,9 @@ import classes from "./LaptopForm.module.css";
 const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
   const [brandList, setBrandList] = useState([]);
   const [cpuList, setCpuList] = useState([]);
+  const [nameReg, setNameReg] = useState();
+
+  const allRegex = new RegExp("[w[] !@#$%^&*()_+=]*");
 
   const brandFetch = async () => {
     const response = await fetch(
@@ -52,7 +55,12 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
   }, []);
 
   const lapNameHandler = (event) => {
-    setData({ ...data, laptop_name: event.target.value });
+    if (allRegex.test(event.target.value)) {
+      setNameReg(true);
+      setData({ ...data, laptop_name: event.target.value });
+    } else {
+      setNameReg(false);
+    }
   };
   const brandIdHandler = (event) => {
     setData({ ...data, laptop_brand_id: event.target.value });

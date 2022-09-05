@@ -7,6 +7,7 @@ const ListComp = (list) => {
 
   const data = list.list;
 
+  
   const buttonhandler = (event) => {
     event.preventDefault();
 
