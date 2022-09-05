@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/redberry-task/static/css/main.f508f973.css",
-    "main.js": "/redberry-task/static/js/main.362ae926.js",
+    "main.css": "/redberry-task/static/css/main.b9e321a0.css",
+    "main.js": "/redberry-task/static/js/main.35a97ab4.js",
     "static/media/Layer1.png": "/redberry-task/static/media/Layer1.82c386dfde8f016911fd.png",
     "index.html": "/redberry-task/index.html",
-    "main.f508f973.css.map": "/redberry-task/static/css/main.f508f973.css.map",
-    "main.362ae926.js.map": "/redberry-task/static/js/main.362ae926.js.map"
+    "main.b9e321a0.css.map": "/redberry-task/static/css/main.b9e321a0.css.map",
+    "main.35a97ab4.js.map": "/redberry-task/static/js/main.35a97ab4.js.map"
   },
   "entrypoints": [
-    "static/css/main.f508f973.css",
-    "static/js/main.362ae926.js"
+    "static/css/main.b9e321a0.css",
+    "static/js/main.35a97ab4.js"
   ]
 }
