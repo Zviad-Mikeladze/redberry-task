@@ -8,7 +8,6 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   const [nameReg, setNameReg] = useState();
   const [emailReg, setEmailReg] = useState();
   const [numReg, setNumReg] = useState();
-  const [valid, setValid] = useState();
 
   const geRegex = new RegExp(/^([\u10D0-\u10F0]{2,})$/);
   const mailRegex = new RegExp("[a-z0-9]+@redberry.ge");
