@@ -108,13 +108,13 @@ const LaptopInfo = (laptopId) => {
 
   const userInfo = info.map((info) => {
     return (
-      <div key={laptopId.laptopId}>
+      <div key={laptopId.laptopId} className={classes.Info}>
         {" "}
         <img
           src={`https://pcfy.redberryinternship.ge${info.laptop.image} `}
           alt="not found"
         ></img>
-        <div className={classes.userData}>
+        <div className={classes.names}>
           <div>
             <p>სახელი:</p>
             <p>თიმი:</p>
@@ -137,15 +137,13 @@ const LaptopInfo = (laptopId) => {
   });
   const lapHardInfo = info.map((info) => {
     return (
-      <div key={laptopId.laptopId} className={classes.userData}>
+      <div key={laptopId.laptopId} className={classes.hard}>
         <div>
+          {" "}
           <p>ლეპტოპის სახელი:</p>
           <p>ლეპტოპის ბრენდი:</p>
           <p>RAM:</p>
           <p>მეხსიერების ტიპი:</p>
-          <p>CPU:</p>
-          <p>CPU ბითვი:</p>
-          <p>CPU ნაკადი:</p>
         </div>
         <div>
           {" "}
@@ -153,6 +151,15 @@ const LaptopInfo = (laptopId) => {
           <p>{brand}</p>
           <p>{info.laptop.ram}</p>
           <p>{info.laptop.hard_drive_type}</p>
+        </div>
+        <div>
+          {" "}
+          <p>CPU:</p>
+          <p>CPU ბითვი:</p>
+          <p>CPU ნაკადი:</p>
+        </div>
+        <div>
+          {" "}
           <p>{info.laptop.cpu.name}</p>
           <p>{info.laptop.cpu.cores}</p>
           <p>{info.laptop.cpu.threads}</p>
@@ -162,26 +169,30 @@ const LaptopInfo = (laptopId) => {
   });
   const lapStateInfo = info.map((info) => {
     return (
-      <div key={laptopId.laptopId} className={classes.userData}>
+      <div key={laptopId.laptopId} className={classes.state}>
         <div>
           <p>ლეპტოპის მდგომარეობა:</p>
           <p>ლეპტოპის ფასი:</p>
-          <p>შეძენის რიცხვი:</p>
+        
         </div>
+       
         <div>
           <p>{info.laptop.state}</p>
           <p>{info.laptop.price}</p>
-          <p>{info.laptop.purchase_date}</p>
+          
         </div>
+        <div>  <p>შეძენის რიცხვი:</p></div>
+        <div><p>{info.laptop.purchase_date}</p></div>
       </div>
     );
   });
 
   return (
-    <div>
+    <div className={classes.userData}>
       <h1> ლეპტოპის ინფო</h1>
-      <div>
-        <div>{userInfo}</div>
+      <div className={classes.card}>
+        <div> {userInfo}</div>
+
         <hr />
         <div>{lapHardInfo}</div>
         <hr />

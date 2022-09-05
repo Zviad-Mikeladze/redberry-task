@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ListComp from "../comonents/ListComp";
-import classes from "./List.module.css";
 const List = () => {
   const [list, setList] = useState([]);
-  
 
   const fetcList = async () => {
     const response = await fetch(
@@ -27,14 +25,8 @@ const List = () => {
   useEffect(() => {
     fetcList();
   }, []);
-  
-  return (
-    <div className={classes.mappedList}>
-     
 
-      <ListComp list={list}  />
-    </div>
-  );
+  return <ListComp list={list} />;
 };
 
 export default List;

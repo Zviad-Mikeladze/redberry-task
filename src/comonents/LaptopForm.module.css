@@ -6,14 +6,7 @@
   align-items: center;
   gap: 20px;
 }
-@media only screen and (max-width: 390px) {
-  .mainInput {
-    width: 390px;
-  }
-  .dropDown {
-    height: 30%;
-  }
-}
+
 small {
   font-size: 10px;
 }

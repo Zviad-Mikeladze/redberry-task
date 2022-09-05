@@ -1,6 +1,50 @@
 .userData {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 1920px;
   gap: 50px;
   font-size: 20px;
+  align-items: center;
+}
+@media only screen and (max-width: 390px) {
+  .userData {
+    width: 390px;
+  font-size: 10px;
+  }
+}
+.card {
+  width: 80%;
+}
+.userData img {
+  width: 20%;
+  height: 20%;
+}
+.box {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.Info {
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+  justify-content: space-evenly;
+}
+.names {
+  display: flex;
+  flex-direction: row;
+  gap: 20%;
+}
+.hard {
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: space-evenly;
+}
+
+.state {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

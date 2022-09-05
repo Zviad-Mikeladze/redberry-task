@@ -10,7 +10,7 @@ const Landing = () => {
       <div className={classes.frame}>
         <div className={classes.image}></div>
       </div>
-      
+
       <div className={classes.buttons}>
         <Link to="/input">
           <button>ჩანაწერის დამატება</button>

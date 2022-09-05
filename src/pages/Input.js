@@ -3,6 +3,7 @@ import LaptopForm from "../comonents/LaptopForm";
 import PersonForm from "../comonents/PersonForm";
 import classes from "./Input.module.css";
 import PopUp from "../comonents/PopUp";
+import { Link } from "react-router-dom";
 const Input = () => {
   const [content, setContent] = useState(0);
   const [page, setPage] = useState(0);
@@ -97,16 +98,18 @@ const Input = () => {
     <div className={classes.inputMain}>
       <div className={classes.butn}>
         <div className={classes.arrowButton}>
-          <button
-            onClick={() => {
-              setPage(page - 1);
-              if (content > 0) {
-                setContent(content - 1);
-              }
-            }}
-          >
-            <div className={classes.arrow}></div>
-          </button>
+          <Link to="/">
+            <button
+              onClick={() => {
+                setPage(page - 1);
+                if (content > 0) {
+                  setContent(content - 1);
+                }
+              }}
+            >
+              <div className={classes.arrow}></div>
+            </button>
+          </Link>
         </div>
       </div>
       <div className={classes.buttons}>

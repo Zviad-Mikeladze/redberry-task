@@ -65,7 +65,7 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   useEffect(() => {
     teamFetch();
   }, []);
-  // console.log(nameReg);
+
   const nameHandler = (event) => {
     if (geRegex.test(event.target.value)) {
       setNameReg(true);
@@ -108,10 +108,10 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   };
 
   const buttonSubmitHandler = (event) => {
-    // if (nameReg && emailReg && numReg) {
-    //   setContent(content + 1);
-    // }
-    setContent(content + 1);
+    if (nameReg && emailReg && numReg) {
+      setContent(content + 1);
+    }
+
     event.preventDefault();
   };
   return (
