@@ -5,8 +5,12 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
   const [brandList, setBrandList] = useState([]);
   const [cpuList, setCpuList] = useState([]);
   const [nameReg, setNameReg] = useState();
+  const [cpuReg, setCpuReg] = useState();
+  const [cpuTrReg, setCpuTrReg] = useState();
+  const [ramReg, setRamReg] = useState();
 
-  const allRegex = new RegExp("[w[] !@#$%^&*()_+=]*");
+  const allRegex = /[\w\[\]!@#$%^&*()_+=]/;
+  const NumRegex = /[0-9]{1}/;
 
   const brandFetch = async () => {
     const response = await fetch(
@@ -69,13 +73,28 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
     setData({ ...data, laptop_cpu: event.target.value });
   };
   const cpuCoresHandler = (event) => {
-    setData({ ...data, laptop_cpu_cores: event.target.value });
+    if (NumRegex.test(event.target.value)) {
+      setData({ ...data, laptop_cpu_cores: event.target.value });
+      setCpuReg(true);
+    } else {
+      setCpuReg(false);
+    }
   };
   const threadsHandler = (event) => {
-    setData({ ...data, laptop_cpu_threads: event.target.value });
+    if (NumRegex.test(event.target.value)) {
+      setData({ ...data, laptop_cpu_threads: event.target.value });
+      setCpuTrReg(true);
+    } else {
+      setCpuTrReg(false);
+    }
   };
   const ramHandler = (event) => {
-    setData({ ...data, laptop_ram: event.target.value });
+    if (NumRegex.test(event.target.value)) {
+      setData({ ...data, laptop_ram: event.target.value });
+      setRamReg(true);
+    } else {
+      setRamReg(false);
+    }
   };
   const driveHandler = (event) => {
     setData({ ...data, laptop_hard_drive_type: event.target.value });
@@ -90,9 +109,12 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
     setData({ ...data, laptop_price: +event.target.value });
   };
   const buttonSubmitHandler = (event) => {
-    event.preventDefault();
+    if (nameReg && cpuReg && cpuTrReg && ramReg) {
+      setPressed(true);
+      console.log("me");
+    }
 
-    setPressed(true);
+    event.preventDefault();
   };
 
   const imgHandler = (event) => {
@@ -107,7 +129,7 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
   return (
     <div className={classes.mainInput}>
       <div className={classes.dropDown}>
-        <input type="file" accept="image/*" required onChange={imgHandler} />
+        <input type="file" accept="image/*" onChange={imgHandler} />
         <p>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</p>
         <button
           onClick={(e) => {
@@ -134,7 +156,7 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
           </option>
           {brandList.map((brand) => {
             return (
-              <option key={brand.id} value={brand.id}>
+              <option required key={brand.id} value={brand.id}>
                 {brand.name}
               </option>
             );
@@ -148,25 +170,44 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
             CPU
           </option>
           {cpuList.map((cpu) => {
-            return <option key={cpu.id}>{cpu.name}</option>;
+            return (
+              <option required key={cpu.id}>
+                {cpu.name}
+              </option>
+            );
           })}
         </select>
         <div className={classes.cpuInput}>
           <label> CPU-ს ბირთვი </label>
-          <input placeholder="14" onChange={cpuCoresHandler} type="number" />
+          <input
+            required
+            placeholder="14"
+            onChange={cpuCoresHandler}
+            type="number"
+          />
           <small>მხოლოდ ციფრები</small>
         </div>
 
         <div className={classes.cpuInput}>
           <label> CPU-ს ნაკადი </label>
-          <input placeholder="365" onChange={threadsHandler} type="number" />
+          <input
+            required
+            placeholder="365"
+            onChange={threadsHandler}
+            type="number"
+          />
           <small>მხოლოდ ციფრები</small>
         </div>
       </div>
       <div className={classes.ram}>
         <div className={classes.ramInput}>
           <label>ლეპტოპის RAM(GB)</label>
-          <input placeholder="16" onChange={ramHandler} type="number" />
+          <input
+            required
+            placeholder="16"
+            onChange={ramHandler}
+            type="number"
+          />
           <small>მხოლოდ ციფრები</small>
         </div>
         <div className={classes.ramType}>
@@ -174,9 +215,21 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
 
           <div className={classes.ramRam}>
             <label>SSD</label>
-            <input type="radio" value="SSD" onChange={driveHandler} />
+            <input
+              required
+              name="ram"
+              type="radio"
+              value="SSD"
+              onChange={driveHandler}
+            />
             <label>HDD</label>
-            <input type="radio" value="HDD" onChange={driveHandler} />
+            <input
+              required
+              name="ram"
+              type="radio"
+              value="HDD"
+              onChange={driveHandler}
+            />
           </div>
         </div>
       </div>
@@ -188,16 +241,30 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
         </div>
         <div className={classes.row}>
           <label>ლეპტოპის ფასი</label>
-          <input placeholder="0000" onChange={priceHandler} />
+          <input required placeholder="0000" onChange={priceHandler} />
           <small>მხოლოდ ციფრები</small>
         </div>
       </div>
       <div className={classes.last}>
         <label>ლეპტოპის მდგომარეობა</label>
         <div className={classes.lastRadio}>
-          <input type="radio" value="new" onChange={stateHandler} />
+          <input
+            required
+            name="state"
+            id="new"
+            type="radio"
+            value="new"
+            onChange={stateHandler}
+          />
           <label>ახალი</label>
-          <input type="radio" value="used" onChange={stateHandler} />
+          <input
+            required
+            id="used"
+            name="state"
+            type="radio"
+            value="used"
+            onChange={stateHandler}
+          />
           <label> მეორადი</label>
         </div>
       </div>
@@ -210,7 +277,11 @@ const LaptopForm = ({ content, setContent, data, setData, setPressed }) => {
         >
           <b>უკან</b>
         </button>
-        <button className={classes.button2} onClick={buttonSubmitHandler}>
+        <button
+          type="submit"
+          className={classes.button2}
+          onClick={buttonSubmitHandler}
+        >
           <b>დამახსოვრება</b>
         </button>
       </div>

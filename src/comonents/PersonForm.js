@@ -8,7 +8,8 @@ const PersonForm = ({ content, setContent, data, setData }) => {
   const [nameReg, setNameReg] = useState();
   const [emailReg, setEmailReg] = useState();
   const [numReg, setNumReg] = useState();
-  console.log(numReg);
+  const [valid, setValid] = useState();
+
   const geRegex = new RegExp(/^([\u10D0-\u10F0]{2,})$/);
   const mailRegex = new RegExp("[a-z0-9]+@redberry.ge");
   const numRegex = new RegExp(/^(\+?995)(5)[0-9]{8}/);
@@ -106,11 +107,13 @@ const PersonForm = ({ content, setContent, data, setData }) => {
     }
   };
 
-  const buttonSubmitHandler = () => {
-    //sesamowmebeli bolo
+  const buttonSubmitHandler = (event) => {
+    // if (nameReg && emailReg && numReg) {
+    //   setContent(content + 1);
+    // }
     setContent(content + 1);
+    event.preventDefault();
   };
-
   return (
     <div className={classes.mainInput}>
       <div className={classes.inputFullName}>
@@ -172,7 +175,11 @@ const PersonForm = ({ content, setContent, data, setData }) => {
         />
         <small>უნდა მთვრდებოდეს @redberry.ge-ით</small>
         <label>ტელეფონის ნომერი</label>
-        <input placeholder="+995598000701" onChange={phoneNumberHandler} />
+        <input
+          required
+          placeholder="+995598000701"
+          onChange={phoneNumberHandler}
+        />
         <small>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</small>
       </div>
       <div className={classes.formButton}>

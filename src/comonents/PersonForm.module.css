@@ -5,6 +5,12 @@
   align-items: center;
   gap: 20px;
 }
+@media only screen and (max-width: 390px) {
+  .inputMain {
+    width: 390px;
+    font-size: 5%;
+  }
+}
 .inputFullName {
   display: flex;
   flex-direction: row;
@@ -31,11 +37,11 @@
 .formButton {
   position: relative;
   margin-left: auto;
-  width: 25%;
+  width: 40%;
   height: 60px;
 }
 .formButton button {
-  width: 80%;
+  width: 100%;
   height: 100%;
   background-color: #62a1eb;
   color: #ffffff;

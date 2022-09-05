@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import classes from "./PopUp.module.css";
 const PopUp = () => {
   return (
+    <div className={classes.popMain}>
     <div className={classes.popUp}>
       <div className={classes.image}></div>
       <div>
@@ -16,6 +17,7 @@ const PopUp = () => {
           <button className={classes.button2}>მთავარი</button>
         </Link>
       </div>
+    </div>
     </div>
   );
 };

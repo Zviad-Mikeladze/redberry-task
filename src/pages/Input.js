@@ -5,6 +5,7 @@ import classes from "./Input.module.css";
 import PopUp from "../comonents/PopUp";
 const Input = () => {
   const [content, setContent] = useState(0);
+  const [page, setPage] = useState(0);
   const [pressed, setPressed] = useState(false);
   const [succes, setSucces] = useState(false);
   const [data, setData] = useState({
@@ -94,9 +95,20 @@ const Input = () => {
 
   return (
     <div className={classes.inputMain}>
-      <button className={classes.back}>
-        <b> &lt;</b>{" "}
-      </button>
+      <div className={classes.butn}>
+        <div className={classes.arrowButton}>
+          <button
+            onClick={() => {
+              setPage(page - 1);
+              if (content > 0) {
+                setContent(content - 1);
+              }
+            }}
+          >
+            <div className={classes.arrow}></div>
+          </button>
+        </div>
+      </div>
       <div className={classes.buttons}>
         <button value={0} onClick={buttonChangeHandler}>
           თანამშრომლის ინფო
