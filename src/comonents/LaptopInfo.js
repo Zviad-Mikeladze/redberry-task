@@ -115,7 +115,7 @@ const LaptopInfo = (laptopId) => {
           alt="not found"
         ></img>
         <div className={classes.names}>
-          <div>
+          <div key={laptopId.laptopId}>
             <p>სახელი:</p>
             <p>თიმი:</p>
             <p>პოზიცია:</p>
@@ -138,27 +138,27 @@ const LaptopInfo = (laptopId) => {
   const lapHardInfo = info.map((info) => {
     return (
       <div key={laptopId.laptopId} className={classes.hard}>
-        <div>
+        <div key={laptopId.laptopId}>
           {" "}
           <p>ლეპტოპის სახელი:</p>
           <p>ლეპტოპის ბრენდი:</p>
           <p>RAM:</p>
           <p>მეხსიერების ტიპი:</p>
         </div>
-        <div>
+        <div key={laptopId.laptopId}>
           {" "}
           <p>{info.laptop.name}</p>
           <p>{brand}</p>
           <p>{info.laptop.ram}</p>
           <p>{info.laptop.hard_drive_type}</p>
         </div>
-        <div>
+        <div key={laptopId.laptopId}>
           {" "}
           <p>CPU:</p>
           <p>CPU ბითვი:</p>
           <p>CPU ნაკადი:</p>
         </div>
-        <div>
+        <div key={laptopId.laptopId}>
           {" "}
           <p>{info.laptop.cpu.name}</p>
           <p>{info.laptop.cpu.cores}</p>
@@ -173,16 +173,19 @@ const LaptopInfo = (laptopId) => {
         <div>
           <p>ლეპტოპის მდგომარეობა:</p>
           <p>ლეპტოპის ფასი:</p>
-        
         </div>
-       
-        <div>
+
+        <div key={laptopId.laptopId}>
           <p>{info.laptop.state}</p>
           <p>{info.laptop.price}</p>
-          
         </div>
-        <div>  <p>შეძენის რიცხვი:</p></div>
-        <div><p>{info.laptop.purchase_date}</p></div>
+        <div>
+          {" "}
+          <p>შეძენის რიცხვი:</p>
+        </div>
+        <div>
+          <p>{info.laptop.purchase_date}</p>
+        </div>
       </div>
     );
   });

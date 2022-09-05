@@ -93,8 +93,8 @@ const Input = () => {
     setPressed(false);
     posting();
   }, [pressed]);
-
-  return (
+  const popap = <div></div>;
+  const unsucces = (
     <div className={classes.inputMain}>
       <div className={classes.butn}>
         <div className={classes.arrowButton}>
@@ -121,12 +121,16 @@ const Input = () => {
         </button>
       </div>
 
-      <form value={data}>
-        {!succes && componentsList[content]}
-        {succes && <PopUp />}
-      </form>
+      <form value={data}>{!succes && componentsList[content]}</form>
 
       <div className={classes.logo}></div>
+    </div>
+  );
+
+  return (
+    <div>
+      {succes && <PopUp />}
+      {!succes && unsucces}
     </div>
   );
 };
